@@ -4,85 +4,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const accents = [
         { rgb: '99, 102, 241', glow: 'rgba(99, 102, 241, 0.15)', placeholderClass: 'placeholder-gradient-1' }, // Indigo
         { rgb: '16, 185, 129', glow: 'rgba(16, 185, 129, 0.15)', placeholderClass: 'placeholder-gradient-2' }, // Emerald
-        { rgb: '249, 115, 22',  glow: 'rgba(249, 115, 22, 0.15)',  placeholderClass: 'placeholder-gradient-3' }, // Orange
+        { rgb: '249, 115, 22', glow: 'rgba(249, 115, 22, 0.15)', placeholderClass: 'placeholder-gradient-3' }, // Orange
         { rgb: '236, 72, 153', glow: 'rgba(236, 72, 153, 0.15)', placeholderClass: 'placeholder-gradient-4' }, // Pink
-        { rgb: '14, 165, 233',  glow: 'rgba(14, 165, 233, 0.15)',  placeholderClass: 'placeholder-gradient-5' }  // Sky
-    ];
-
-    // Fallback data in case of CORS restriction when opening index.html locally via file:// protocol
-    const fallbackData = [
-        {
-            "title": "Style Scalpel",
-            "author": "Muhammad Ismail",
-            "affiliation": "Eötvös Loránd University, Hungary",
-            "area": "Stylistics",
-            "url": "https://stylescalpel.com/",
-            "video_link": "",
-            "description": "Style Scalpel is a web application that aims to make AI-text analysis more transparent through stylometric evidence. Adopting a forensic authorship-attribution approach, the application examines what linguistic and stylometric evidence supports that attribution, how the evidence can be inspected, and how cautiously the result should be reported. The application is also available in a Windows release, GitHub documentation, an OSF archive/DOI, and interactive 132-feature visualization maps."
-        },
-        {
-            "title": "Vocab Learning",
-            "author": "Ariadna Estefanía Pinto Avilez",
-            "affiliation": "Universidad de Concepción, Chile",
-            "area": "Vocab Learning",
-            "url": "",
-            "video_link": "",
-            "description": ""
-        },
-        {
-            "title": "Interactional Competence",
-            "author": "Tap Tantiwich",
-            "affiliation": "School of Languages, Societies and Cultures, University of Leeds, UK",
-            "area": "Interactional Competence",
-            "url": "",
-            "video_link": "",
-            "description": ""
-        },
-        {
-            "title": "Historical Ling",
-            "author": "Catherine Wong",
-            "affiliation": "Digital Humanities Institute, University of Sheffield, UK",
-            "area": "Historical Ling",
-            "url": "",
-            "video_link": "",
-            "description": ""
-        },
-        {
-            "title": "Merlin’s Syntax Studio",
-            "author": "Merlin Yang",
-            "affiliation": "Zhejiang University of Technology, China",
-            "area": "Syntax",
-            "url": "https://ailinguistics.cloud/mss/",
-            "video_link": "",
-            "description": ""
-        }
+        { rgb: '14, 165, 233', glow: 'rgba(14, 165, 233, 0.15)', placeholderClass: 'placeholder-gradient-5' }  // Sky
     ];
 
     /* ==========================================
-       1. DATA FETCH & RENDERING ENGINE
+       1. DATA FETCH AND RENDERING ENGINE
        ========================================== */
-    if (window.location.protocol === 'file:') {
-        console.log("Local filesystem access detected (file://). Activating fallback data to bypass CORS restrictions.");
-        renderContent(fallbackData);
-        initializeInteractions();
-    } else {
-        fetch('app_details.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                renderContent(data);
-                initializeInteractions();
-            })
-            .catch(err => {
-                console.error("JSON fetch failed. Falling back to embedded dataset.", err);
-                renderContent(fallbackData);
-                initializeInteractions();
-            });
-    }
+    fetch('app_details.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            renderContent(data);
+            initializeInteractions();
+        })
+        .catch(err => {
+            console.error("Failed to load application details:", err);
+        });
 
     function renderContent(data) {
         const navContainer = document.getElementById('nav-links-container');
@@ -94,20 +37,42 @@ document.addEventListener('DOMContentLoaded', () => {
         miniGridContainer.innerHTML = '';
         showcaseContainer.innerHTML = '';
 
+        // About this Project card (without index number, not shown in list view)
+        const aboutSection = document.createElement('section');
+        aboutSection.className = 'showcase-card reveal';
+        aboutSection.id = 'about-project';
+        aboutSection.style.cssText = `display: block; max-width: 900px; margin: 0 auto; --accent-color: 99, 102, 241; --accent-glow: rgba(99, 102, 241, 0.15);`;
+        aboutSection.innerHTML = `
+            <div class="card-content" style="max-width: 100%;">
+                <span class="app-category">Overview</span>
+                <h2 class="app-title">About this Project</h2>
+                <p class="app-description">
+                    This platform showcases a suite of interactive, AI-assisted web applications developed by researchers and linguists. These applications bridge advanced linguistic methodologies with intuitive digital interfaces, facilitating research and learning in areas such as stylistics, vocabulary acquisition, interactional competence, syntax, and historical linguistics.
+                </p>
+                <p class="app-description">
+                    This showcase is the output from a project generously supported by the Digital Cultures and Creativity Hub at the Unviersity of Leeds, in which participants received training in rapid prototyping and deployment of functional web applications.
+                    Some of the tools were invited by the PI for their relevance and innovation.
+                </p>
+            </div>
+        `;
+        showcaseContainer.appendChild(aboutSection);
+
         data.forEach((app, index) => {
             const accent = accents[index % accents.length];
             const indexStr = String(index + 1).padStart(2, '0');
-            
+
             // Handle titles with bracket notes or long titles gracefully
-            const shortName = app.title.includes('[') 
-                ? app.title.split('[')[1].replace(']', '') 
+            const shortName = app.title.includes('[')
+                ? app.title.split('[')[1].replace(']', '')
                 : app.title.split(' ')[0];
-                
+
             const isReverse = index % 2 === 1 ? 'card-reverse' : '';
-            
+
+            const isWebUrl = app.url && (app.url.startsWith('http://') || app.url.startsWith('https://'));
+
             // Safely parse mockup Slug domain name or use a default slug
-            const mockupSlug = app.url 
-                ? app.url.replace('https://', '').replace('http://', '').split('/')[0] 
+            const mockupSlug = isWebUrl
+                ? app.url.replace('https://', '').replace('http://', '').split('/')[0]
                 : `${app.title.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()}.local`;
 
             // 1. Navigation item
@@ -152,16 +117,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 : `<p class="app-description" style="font-style: italic; opacity: 0.6;">A description for this project will be added soon.</p>`;
 
             // Compose CTA action button with fallback placeholder
-            const ctaBtnHtml = app.url
-                ? `<a href="${app.url}" target="_blank" rel="noopener" class="btn-card-cta" id="cta-app-${index + 1}">
+            let ctaBtnHtml = '';
+            if (isWebUrl) {
+                ctaBtnHtml = `<a href="${app.url}" target="_blank" rel="noopener" class="btn-card-cta" id="cta-app-${index + 1}">
                        Launch App
                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M5 3H13M13 3V11M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                        </svg>
-                   </a>`
-                : `<span class="btn-card-cta" style="background: var(--text-muted); opacity: 0.65; cursor: not-allowed; box-shadow: none;">
+                   </a>`;
+            } else if (app.url) {
+                ctaBtnHtml = `<span class="btn-card-cta" style="background: var(--text-muted); opacity: 0.85; cursor: default; box-shadow: none;">
+                       ${app.url}
+                   </span>`;
+            } else {
+                ctaBtnHtml = `<span class="btn-card-cta" style="background: var(--text-muted); opacity: 0.65; cursor: not-allowed; box-shadow: none;">
                        Link Coming Soon
                    </span>`;
+            }
+
+            // Compose video/iframe visual HTML structure
+            let visualHtml = '';
+            if (app.video_link) {
+                const isGoogleDriveVideo = app.video_link.includes('drive.google.com');
+                if (isGoogleDriveVideo) {
+                    const match = app.video_link.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || app.video_link.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+                    const driveDirectUrl = match && match[1] ? `https://drive.google.com/uc?export=download&id=${match[1]}` : '';
+                    if (driveDirectUrl) {
+                        visualHtml = `<video class="showcase-video" loop muted playsinline><source src="${driveDirectUrl}" type="video/mp4"></video>`;
+                    }
+                } else {
+                    visualHtml = `<video class="showcase-video" loop muted playsinline><source src="${app.video_link}" type="video/mp4"></video>`;
+                }
+            }
 
             // 3. Showcase detail section card
             const section = document.createElement('section');
@@ -197,9 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                                 <span class="placeholder-text">${app.title}</span>
                             </div>
-                            <video class="showcase-video" loop muted playsinline>
-                                ${app.video_link ? `<source src="${app.video_link}" type="video/mp4">` : ''}
-                            </video>
+                            ${visualHtml}
                         </div>
                     </div>
                 </div>
@@ -212,10 +197,10 @@ document.addEventListener('DOMContentLoaded', () => {
        2. INTERACTION ENGINE (REVEALS, PLAYBACK, PARALLAX)
        ========================================== */
     function initializeInteractions() {
-        
+
         // --- 2.1 Scroll Reveals ---
         const revealElements = document.querySelectorAll('.reveal');
-        
+
         const revealObserverOptions = {
             root: null,
             threshold: 0.15,
@@ -235,40 +220,62 @@ document.addEventListener('DOMContentLoaded', () => {
             revealObserver.observe(element);
         });
 
-        // --- 2.2 Video Playback Observability ---
-        const videos = document.querySelectorAll('.showcase-video');
+        // 2.2 Media Playback and Loading Observability
+        const mediaElements = document.querySelectorAll('.showcase-video');
 
-        const videoObserverOptions = {
+        const mediaObserverOptions = {
             root: null,
             threshold: 0.3,
             rootMargin: '0px'
         };
 
-        const videoObserver = new IntersectionObserver((entries) => {
+        const mediaObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                const video = entry.target;
-                
+                const media = entry.target;
+                const isVideo = media.tagName.toLowerCase() === 'video';
+
                 if (entry.isIntersecting) {
-                    const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(() => {});
+                    if (isVideo) {
+                        const playPromise = media.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(() => { });
+                        }
                     }
                 } else {
-                    video.pause();
+                    if (isVideo) {
+                        media.pause();
+                    }
                 }
             });
-        }, videoObserverOptions);
+        }, mediaObserverOptions);
 
-        videos.forEach(video => {
-            video.addEventListener('loadeddata', () => {
-                video.classList.add('loaded');
-            });
-            videoObserver.observe(video);
+        mediaElements.forEach(media => {
+            const isVideo = media.tagName.toLowerCase() === 'video';
+            if (isVideo) {
+                if (media.readyState >= 2) {
+                    media.classList.add('loaded');
+                } else {
+                    media.addEventListener('loadeddata', () => {
+                        media.classList.add('loaded');
+                    });
+                }
+                setTimeout(() => {
+                    media.classList.add('loaded');
+                }, 2000);
+            } else {
+                media.addEventListener('load', () => {
+                    media.classList.add('loaded');
+                });
+                setTimeout(() => {
+                    media.classList.add('loaded');
+                }, 1000);
+            }
+            mediaObserver.observe(media);
         });
 
         // --- 2.3 Smooth Nav scrolls with offset ---
         const anchorLinks = document.querySelectorAll('a[href^="#"]');
-        
+
         anchorLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const targetId = link.getAttribute('href');
@@ -277,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     e.preventDefault();
-                    
+
                     const headerHeight = document.querySelector('.site-header').offsetHeight || 80;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
@@ -296,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const handleParallax = () => {
             const scrollTop = window.pageYOffset;
-            
+
             appNumbers.forEach(badge => {
                 const parentCard = badge.closest('.showcase-card');
                 if (!parentCard) return;
@@ -308,11 +315,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (rect.top < windowHeight && rect.bottom > 0) {
                     const relativeScroll = (scrollTop + windowHeight - cardTop) / (windowHeight + cardHeight);
-                    const shiftY = (relativeScroll - 0.5) * 80; 
+                    const shiftY = (relativeScroll - 0.5) * 80;
                     badge.style.transform = `translateY(${shiftY}px)`;
                 }
             });
-            
+
             isScrolling = false;
         };
 
@@ -322,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 isScrolling = true;
             }
         });
-        
+
         // Run parallax once on load to align initial visible cards
         handleParallax();
     }
