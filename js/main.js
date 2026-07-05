@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     This platform showcases a suite of interactive, AI-assisted web applications developed by researchers and linguists. These applications bridge advanced linguistic methodologies with intuitive digital interfaces, facilitating research and learning in areas such as stylistics, vocabulary acquisition, interactional competence, syntax, and historical linguistics.
                 </p>
                 <p class="app-description">
-                    This showcase is the output from a project generously supported by the Digital Cultures and Creativity Hub at the Unviersity of Leeds, in which participants received training in rapid prototyping and deployment of functional web applications.
+                    This showcase is the output from a project generously supported by the <a href="https://dcch.leeds.ac.uk/" target="_blank">Digital Cultures and Creativity Hub</a> at the Unviersity of Leeds, in which participants received training in rapid prototyping and deployment of functional web applications.
                     Some of the tools were invited by the PI for their relevance and innovation.
                 </p>
             </div>
