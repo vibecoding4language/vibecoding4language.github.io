@@ -4,6 +4,7 @@
         "author": "Muhammad Ismail",
         "affiliation": "Eötvös Loránd University, Hungary",
         "area": "Stylistics",
+        "tab_label": "Stylistics",
         "url": "https://stylescalpel.com/",
         "video_link": "https://drive.google.com/file/d/1w--8Z5Wn-8qciO6BpIgYEvyioqsGvAAO/view",
         "description": "Style Scalpel is a web application that aims to make AI-text analysis more transparent through stylometric evidence. Adopting a forensic authorship-attribution approach, the application examines what linguistic and stylometric evidence supports that attribution, how the evidence can be inspected, and how cautiously the result should be reported. The application is also available in a Windows release, GitHub documentation, an OSF archive/DOI, and interactive 132-feature visualization maps."
@@ -13,15 +14,17 @@
         "author": "Ariadna Estefanía Pinto Avilez",
         "affiliation": "Universidad de Concepción, Chile",
         "area": "Vocab Learning",
+        "tab_label": "Vocab",
         "url": "https://vocabulary-analyser-1-0.replit.app/",
         "video_link": "https://drive.google.com/file/d/1B6X-Sx1sn37N4iI0a-yaYzP9YHbTAtZc/view",
         "description": "The Vocabulary Analyser is an AI-powered web application designed to help teachers, researchers, and students evaluate the lexical quality of English texts. By simply uploading a text, users receive detailed insights into vocabulary use, including lexical diversity, word frequency profiles, academic vocabulary coverage, and CEFR-level distribution. The app generates clear visualizations and downloadable reports, making it easy to assess lexical sophistication and identify areas for improvement. Whether for language teaching, writing assessment, or corpus-based research, the Vocabulary Analyser provides fast, reliable, and accessible vocabulary analysis to support data-informed learning and instruction."
     },
     {
-        "title": "Interactional Competence",
+        "title": "In-the-Cloud Interactions",
         "author": "Tap Tantiwich",
         "affiliation": "School of Languages, Societies and Cultures, University of Leeds, UK",
         "area": "Interactional Competence",
+        "tab_label": "Interaction",
         "url": "Please contact Tap for closed testing",
         "video_link": "https://drive.google.com/file/d/1M_zbX_UNj3wBDYGt7F58fatP484xlKOI/view",
         "description": "Imagine being an EFL learner who has studied English as a foreign language for years but rarely has the opportunity to use it in real conversations. This is a common challenge for many learners, particularly in foreign language contexts. <br>To help address this issue, I developed In-the-Cloud Interaction, an AI-powered speaking platform that enables learners to engage in real-time conversations with an AI-simulated interlocutor. Learners can practice communicating in a variety of everyday situations, such as checking in at an airport, ordering food at a restaurant, or simply having a casual coffee chat.<br>The goal of the application is not only to improve learners' speaking fluency and confidence, but also to create opportunities for meaningful interaction that can support the development of their interactional competence."
@@ -31,6 +34,7 @@
         "author": "Catherine Wong",
         "affiliation": "Digital Humanities Institute, University of Sheffield, UK",
         "area": "Historical Ling",
+        "tab_label": "Historical",
         "url": "",
         "video_link": "",
         "description": ""
@@ -40,8 +44,19 @@
         "author": "Merlin Yang",
         "affiliation": "Zhejiang University of Technology, China",
         "area": "Syntax",
+        "tab_label": "Syntax",
         "url": "https://ailinguistics.cloud/mss/",
         "video_link": "https://drive.google.com/file/d/1tFUM1uJ4q3nO6EH4_1IeJPVj7nPs1Hoq/view",
         "description": "Merlin's Syntax Studio is a web-based tool that turns bracket notation into editable syntax trees. It was developed to reduce the repeated manual work involved in preparing syntax diagrams for language teaching, assignments, presentations and research drafts. Users can type a compact structural expression, preview the tree immediately, adjust labels, branches, triangle roofs and movement links by hand, and export the result as SVG, PNG or Forest LaTeX. It supports UTF-8 characters such as Chinese or Japanese. The tool supports common syntactic conventions such as indices, traces, empty terminals, Greek symbols and movement curves. Its main value is controlled speed: quick generation, precise correction and reusable output."
+    },
+    {
+        "title": "",
+        "author": "Paul Hendrie",
+        "affiliation": "Explore AI for HE, UK",
+        "area": "English for Academic Purposes",
+        "tab_label": "EAP",
+        "url": "https://www.aiforhe.com",
+        "video_link": "",
+        "description": ""
     }
 ]

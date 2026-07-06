@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const navLink = document.createElement('a');
             navLink.href = `#app-${index + 1}`;
             navLink.className = 'nav-item';
-            navLink.textContent = shortName;
+            navLink.textContent = app.tab_label || app.area || "Workshop Tool";
             navContainer.appendChild(navLink);
 
             // 2. Hero sidebar card
@@ -141,9 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isGoogleDriveVideo = app.video_link.includes('drive.google.com');
                 if (isGoogleDriveVideo) {
                     const match = app.video_link.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || app.video_link.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-                    const driveDirectUrl = match && match[1] ? `https://drive.google.com/uc?export=download&id=${match[1]}` : '';
-                    if (driveDirectUrl) {
-                        visualHtml = `<video class="showcase-video" loop muted playsinline><source src="${driveDirectUrl}" type="video/mp4"></video>`;
+                    const drivePreviewUrl = match && match[1] ? `https://drive.google.com/file/d/${match[1]}/preview` : '';
+                    if (drivePreviewUrl) {
+                        visualHtml = `<iframe class="showcase-video" src="${drivePreviewUrl}" allow="autoplay" style="border: none;"></iframe>`;
                     }
                 } else {
                     visualHtml = `<video class="showcase-video" loop muted playsinline><source src="${app.video_link}" type="video/mp4"></video>`;
@@ -323,15 +323,35 @@ document.addEventListener('DOMContentLoaded', () => {
             isScrolling = false;
         };
 
+        const handleNavVisibility = () => {
+            const aboutSectionElement = document.getElementById('about-project');
+            const navLinksContainer = document.getElementById('nav-links-container');
+            if (!aboutSectionElement || !navLinksContainer) return;
+
+            const headerHeight = document.querySelector('.site-header').offsetHeight || 80;
+            const rect = aboutSectionElement.getBoundingClientRect();
+            
+            // If the top of the about section is at or above the bottom of the header, show the tabs
+            if (rect.top <= headerHeight + 50) {
+                navLinksContainer.classList.add('visible');
+            } else {
+                navLinksContainer.classList.remove('visible');
+            }
+        };
+
         window.addEventListener('scroll', () => {
+            handleNavVisibility();
             if (!isScrolling) {
                 window.requestAnimationFrame(handleParallax);
                 isScrolling = true;
             }
         });
 
-        // Run parallax once on load to align initial visible cards
+        window.addEventListener('resize', handleNavVisibility);
+
+        // Run once on load to align states
         handleParallax();
+        handleNavVisibility();
     }
 
 });
