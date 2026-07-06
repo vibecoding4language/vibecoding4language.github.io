@@ -569,6 +569,20 @@ body {
     color: var(--text-muted);
 }
 
+.author-email-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    border-bottom: 1px dashed rgba(var(--accent-color), 0.4);
+    padding-bottom: 1px;
+}
+
+.author-email-link:hover {
+    color: rgb(var(--accent-color));
+    border-bottom-style: solid;
+    border-bottom-color: rgb(var(--accent-color));
+}
+
 .app-description {
     font-size: 0.975rem;
     color: var(--text-secondary);

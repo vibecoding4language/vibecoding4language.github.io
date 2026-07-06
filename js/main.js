@@ -106,7 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
             let metaHtml = '';
             if (app.author || app.affiliation) {
                 const parts = [];
-                if (app.author) parts.push(`By ${app.author}`);
+                if (app.author) {
+                    if (app.email) {
+                        parts.push(`By <a href="mailto:${app.email}" class="author-email-link">${app.author}</a>`);
+                    } else {
+                        parts.push(`By ${app.author}`);
+                    }
+                }
                 if (app.affiliation) parts.push(app.affiliation);
                 metaHtml = `<div class="app-meta"><span class="app-author-info">${parts.join(' &bull; ')}</span></div>`;
             }
