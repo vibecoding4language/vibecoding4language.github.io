@@ -33,11 +33,11 @@
         "description": "Imagine being an EFL learner who has studied English as a foreign language for years but rarely has the opportunity to use it in real conversations. This is a common challenge for many learners, particularly in foreign language contexts. <br>To help address this issue, I developed In-the-Cloud Interaction, an AI-powered speaking platform that enables learners to engage in real-time conversations with an AI-simulated interlocutor. Learners can practice communicating in a variety of everyday situations, such as checking in at an airport, ordering food at a restaurant, or simply having a casual coffee chat.<br>The goal of the application is not only to improve learners' speaking fluency and confidence, but also to create opportunities for meaningful interaction that can support the development of their interactional competence."
     },
     {
-        "title": "Historical Ling",
+        "title": "Historical Linguistics Dashboard",
         "author": "Catherine Wong",
         "affiliation": "Digital Humanities Institute, University of Sheffield, UK",
         "email": "catherine.wong@sheffield.ac.uk",
-        "area": "Historical Ling",
+        "area": "Historical Linguistics",
         "tab_label": "Historical",
         "url": "",
         "video_link": "",
@@ -55,13 +55,24 @@
         "description": "Merlin's Syntax Studio is a web-based tool that turns bracket notation into editable syntax trees. It was developed to reduce the repeated manual work involved in preparing syntax diagrams for language teaching, assignments, presentations and research drafts. Users can type a compact structural expression, preview the tree immediately, adjust labels, branches, triangle roofs and movement links by hand, and export the result as SVG, PNG or Forest LaTeX. It supports UTF-8 characters such as Chinese or Japanese. The tool supports common syntactic conventions such as indices, traces, empty terminals, Greek symbols and movement curves. Its main value is controlled speed: quick generation, precise correction and reusable output."
     },
     {
-        "title": "",
+        "title": "Learning gallery",
         "author": "Paul Hendrie",
         "affiliation": "Explore AI for HE, UK",
         "email": "info@aiforhe.com",
         "area": "English for Academic Purposes",
         "tab_label": "EAP",
-        "url": "https://www.aiforhe.com",
+        "url": "https://learning-gallery-seven.vercel.app/Learning%20Gallery.html",
+        "video_link": "https://drive.google.com/file/d/1iymK3B-CNiTscLF9MpcoZuQ6m4qlhyA1/view",
+        "description": ""
+    },
+    {
+        "title": "EAPedia",
+        "author": "Paul Hendrie",
+        "affiliation": "Explore AI for HE, UK",
+        "email": "info@aiforhe.com",
+        "area": "English for Academic Purposes",
+        "tab_label": "EAP",
+        "url": "https://eapedia.netlify.app",
         "video_link": "",
         "description": ""
     }
