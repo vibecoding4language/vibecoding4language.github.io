@@ -40,8 +40,8 @@
         "area": "Historical Linguistics",
         "tab_label": "Historical",
         "url": "https://dramascope.replit.app/dashboard",
-        "video_link": "",
-        "description": ""
+        "video_link": "https://drive.google.com/file/d/1-Q2uJZjmUEI8ZDfb1IdQ_2ND2dPrrBtd/view",
+        "description": "DramaScope is a web-based research platform for investigating language patterns and language change in Early Modern English dramatic discourse through lexical, semantic, and discursive analysis.  It brings together multiple analytical workflows within a single interactive environment. Users can explore individual lexical items, recurring expressions, and conceptual structures through integrated visualisations, concordance analysis, collocation measures, and concept modelling. The platform combines transparent analytical workflows with comprehensive methodological documentation, supporting reproducible digital humanities research. Although DramaScope v1.0 currently focuses on a Shakespeare corpus, its architecture has been designed to support additional Early Modern playwrights in future releases."
     },
     {
         "title": "Merlin's Syntax Studio",
