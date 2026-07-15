@@ -33,13 +33,13 @@
         "description": "Imagine being an EFL learner who has studied English as a foreign language for years but rarely has the opportunity to use it in real conversations. This is a common challenge for many learners, particularly in foreign language contexts. <br>To help address this issue, I developed In-the-Cloud Interaction, an AI-powered speaking platform that enables learners to engage in real-time conversations with an AI-simulated interlocutor. Learners can practice communicating in a variety of everyday situations, such as checking in at an airport, ordering food at a restaurant, or simply having a casual coffee chat.<br>The goal of the application is not only to improve learners' speaking fluency and confidence, but also to create opportunities for meaningful interaction that can support the development of their interactional competence."
     },
     {
-        "title": "Historical Linguistics Dashboard",
+        "title": "DramaScope",
         "author": "Catherine Wong",
         "affiliation": "Digital Humanities Institute, University of Sheffield, UK",
         "email": "catherine.wong@sheffield.ac.uk",
         "area": "Historical Linguistics",
         "tab_label": "Historical",
-        "url": "",
+        "url": "https://dramascope.replit.app/dashboard",
         "video_link": "",
         "description": ""
     },
@@ -63,7 +63,7 @@
         "tab_label": "EAP",
         "url": "https://learning-gallery-seven.vercel.app/Learning%20Gallery.html",
         "video_link": "https://drive.google.com/file/d/1iymK3B-CNiTscLF9MpcoZuQ6m4qlhyA1/view",
-        "description": ""
+        "description": "The Learning Gallery is a walkable atlas of how people learn."
     },
     {
         "title": "EAPedia",
@@ -74,6 +74,6 @@
         "tab_label": "EAP",
         "url": "https://eapedia.netlify.app",
         "video_link": "https://drive.google.com/file/d/1iymK3B-CNiTscLF9MpcoZuQ6m4qlhyA1/view",
-        "description": ""
+        "description": "EAPedia is a writing studio for post-graduate students designed and built by Paul Hendrie."
     }
 ]
